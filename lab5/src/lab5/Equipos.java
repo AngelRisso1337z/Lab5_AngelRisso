@@ -59,5 +59,10 @@ public class Equipos {
     public void setEstadio(String Estadio) {
         this.Estadio = Estadio;
     }
+
+    @Override
+    public String toString() {
+        return   nombre_deEquipo + " "+ Estadio;
+    }
     
 }

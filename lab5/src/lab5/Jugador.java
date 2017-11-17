@@ -13,13 +13,14 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(String nombre, double habilidad, double tecnica, double resistencia, double precio, boolean dispon) {
+    public Jugador(String nombre, double habilidad, double tecnica, double resistencia, double precio, boolean dispon,String pocicion) {
         this.nombre = nombre;
         this.habilidad = habilidad;
         this.tecnica = tecnica;
         this.resistencia = resistencia;
         this.precio = precio;
         this.dispon = dispon;
+        this.pocicion=pocicion;
     }
 
     public String getNombre() {

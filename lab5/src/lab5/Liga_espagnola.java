@@ -21,7 +21,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
      */
     public Liga_espagnola() {
         initComponents();
-        this.setResizable(false);
+        
         this.pack();
     }
 
@@ -81,7 +81,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
 
         jd_agregar.setTitle("Agregar");
         jd_agregar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jd_agregar.setPreferredSize(new java.awt.Dimension(1026, 538));
+        jd_agregar.setPreferredSize(new java.awt.Dimension(803, 546));
         jd_agregar.setResizable(false);
         jd_agregar.getContentPane().setLayout(null);
 
@@ -146,19 +146,19 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jl_jugadores);
 
         jd_agregar.getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(590, 350, 207, 159);
+        jScrollPane1.setBounds(580, 350, 207, 159);
 
         jLabel9.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel9.setText("Lista jugadores");
         jd_agregar.getContentPane().add(jLabel9);
         jLabel9.setBounds(590, 320, 80, 17);
 
-        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         jLabel11.setText("Nombre de Jugador");
         jd_agregar.getContentPane().add(jLabel11);
         jLabel11.setBounds(42, 342, 106, 17);
 
-        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         jLabel12.setText("Disponible");
         jd_agregar.getContentPane().add(jLabel12);
         jLabel12.setBounds(92, 313, 53, 17);
@@ -255,18 +255,18 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jLabel17.setBounds(414, 330, 50, 17);
 
         sp_habilidad.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        sp_habilidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        sp_habilidad.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 100.0d, 1.0d));
         jd_agregar.getContentPane().add(sp_habilidad);
         sp_habilidad.setBounds(500, 370, 50, 30);
 
         sp_dura.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        sp_dura.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        sp_dura.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 100.0d, 1.0d));
         sp_dura.setMaximumSize(new java.awt.Dimension(100, 100));
         jd_agregar.getContentPane().add(sp_dura);
         sp_dura.setBounds(500, 290, 50, 30);
 
         sp_tecnica.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        sp_tecnica.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        sp_tecnica.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 100.0d, 1.0d));
         jd_agregar.getContentPane().add(sp_tecnica);
         sp_tecnica.setBounds(500, 330, 50, 30);
 
@@ -276,6 +276,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jLabel10.setBounds(610, 30, 70, 17);
 
         jl_equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jl_equipos.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(jl_equipos);
 
         jd_agregar.getContentPane().add(jScrollPane2);
@@ -284,7 +285,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5/estadio-de-fútbol-vacío-41316005.jpg"))); // NOI18N
         jLabel18.setText("   ");
         jd_agregar.getContentPane().add(jLabel18);
-        jLabel18.setBounds(0, 0, 813, 540);
+        jLabel18.setBounds(0, 0, 800, 540);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
@@ -355,6 +356,8 @@ public class Liga_espagnola extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         equipo.add(new Equipos(nombre, copas, presupuesto, estadio));
+        DefaultListModel modelo = (DefaultListModel) jl_equipos.getModel();
+        modelo.addElement(new Equipos(nombre, copas, presupuesto, estadio));
 
     }//GEN-LAST:event_bt_crearEMouseClicked
 
@@ -382,10 +385,12 @@ public class Liga_espagnola extends javax.swing.JFrame {
         double resistencia = 0.0;
         String pocicion = " ";
         boolean dispo = false;
+        
         nombre = tf_jugador.getText();
         precio = Double.parseDouble(tf_precio.getText());
-        tecnica = Double.parseDouble((String) sp_tecnica.getValue());
-        habilidad = Double.parseDouble((String) sp_habilidad.getValue());
+        tecnica = (Double)sp_tecnica.getValue();
+        habilidad = (Double)sp_habilidad.getValue();
+        resistencia = (Double)sp_dura.getValue();
 
         if (rb_atacante.isSelected()) {
             pocicion = "Atacante";
@@ -404,6 +409,14 @@ public class Liga_espagnola extends javax.swing.JFrame {
         dispo = rb_dis.isSelected();
         jugadores.add(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo));
 
+        tf_jugador.setText("");
+        sp_tecnica.setValue(1);
+        sp_habilidad.setValue(1);
+        sp_dura.setValue(1);
+        tf_precio.setText("");
+        
+        DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
+        modelo.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo));
     }//GEN-LAST:event_bt_jugadoresMouseClicked
 
     /**
