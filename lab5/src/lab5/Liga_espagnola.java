@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 /**
@@ -22,7 +23,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
      */
     public Liga_espagnola() {
         initComponents();
-        
+
         this.pack();
     }
 
@@ -317,6 +318,11 @@ public class Liga_espagnola extends javax.swing.JFrame {
 
         jl_lisJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jl_lisJugadores.setModel(new DefaultListModel());
+        jl_lisJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_lisJugadoresMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jl_lisJugadores);
 
         jt_equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
@@ -478,12 +484,12 @@ public class Liga_espagnola extends javax.swing.JFrame {
         double resistencia = 0.0;
         String pocicion = " ";
         boolean dispo = false;
-        
+
         nombre = tf_jugador.getText();
         precio = Double.parseDouble(tf_precio.getText());
-        tecnica = (Double)sp_tecnica.getValue();
-        habilidad = (Double)sp_habilidad.getValue();
-        resistencia = (Double)sp_dura.getValue();
+        tecnica = (Double) sp_tecnica.getValue();
+        habilidad = (Double) sp_habilidad.getValue();
+        resistencia = (Double) sp_dura.getValue();
 
         if (rb_atacante.isSelected()) {
             pocicion = "Atacante";
@@ -500,17 +506,17 @@ public class Liga_espagnola extends javax.swing.JFrame {
         }
 
         dispo = rb_dis.isSelected();
-        jugadores.add(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo,pocicion));
+        jugadores.add(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo, pocicion));
 
         tf_jugador.setText("");
         sp_tecnica.setValue(1);
         sp_habilidad.setValue(1);
         sp_dura.setValue(1);
         tf_precio.setText("");
-        
+
         DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
-        DefaultListModel mod=(DefaultListModel) jl_lisJugadores.getModel();
-        modelo.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo,pocicion));
+        DefaultListModel mod = (DefaultListModel) jl_lisJugadores.getModel();
+        modelo.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo, pocicion));
         mod.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo, pocicion));
     }//GEN-LAST:event_bt_jugadoresMouseClicked
 
@@ -537,14 +543,22 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         int response = JOptionPane.showConfirmDialog(this, "seguro eliminar?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.OK_OPTION) {
-            
-            DefaultListModel mod=(DefaultListModel)jl_lisJugadores.getModel();
-            Jugador t = (Jugador) mod.
-                    get(jl_lisJugadores.getSelectedIndex());
-            
+            DefaultTreeModel m=(DefaultTreeModel)jt_equipos.getModel();
+            DefaultListModel mod = (DefaultListModel) jl_lisJugadores.getModel();
+            DefaultMutableTreeNode mode=(DefaultMutableTreeNode) jt_equipos.getModel();
+            mod.remove(jl_lisJugadores.getSelectedIndex());
+            mode.remove(jl_lisJugadores.getSelectedIndex());
+            m.reload();
             
         }
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void jl_lisJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_lisJugadoresMouseClicked
+        if (evt.isMetaDown()) {
+            int cosa = jl_lisJugadores.getSelectedIndex();
+            pp_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jl_lisJugadoresMouseClicked
 
     /**
      * @param args the command line arguments
