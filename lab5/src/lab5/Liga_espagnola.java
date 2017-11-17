@@ -23,7 +23,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
      */
     public Liga_espagnola() {
         initComponents();
-
+        
         this.pack();
     }
 
@@ -85,6 +85,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         bt_comprar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
         bt_listar = new javax.swing.JButton();
@@ -316,6 +317,8 @@ public class Liga_espagnola extends javax.swing.JFrame {
         });
         pp_menu.add(modificar);
 
+        jd_listar.getContentPane().setLayout(null);
+
         jl_lisJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jl_lisJugadores.setModel(new DefaultListModel());
         jl_lisJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,10 +328,16 @@ public class Liga_espagnola extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jl_lisJugadores);
 
+        jd_listar.getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(23, 51, 179, 262);
+
         jt_equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
         jt_equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane4.setViewportView(jt_equipos);
+
+        jd_listar.getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(361, 51, 191, 262);
 
         bt_comprar.setText("Añadir a equipo");
         bt_comprar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -336,50 +345,23 @@ public class Liga_espagnola extends javax.swing.JFrame {
                 bt_comprarMouseClicked(evt);
             }
         });
+        jd_listar.getContentPane().add(bt_comprar);
+        bt_comprar.setBounds(236, 170, 107, 23);
 
         jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel19.setText("Jugadores");
+        jd_listar.getContentPane().add(jLabel19);
+        jLabel19.setBounds(71, 23, 53, 17);
 
         jLabel20.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel20.setText("Equipos");
+        jd_listar.getContentPane().add(jLabel20);
+        jLabel20.setBounds(416, 23, 39, 17);
 
-        javax.swing.GroupLayout jd_listarLayout = new javax.swing.GroupLayout(jd_listar.getContentPane());
-        jd_listar.getContentPane().setLayout(jd_listarLayout);
-        jd_listarLayout.setHorizontalGroup(
-            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_listarLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(bt_comprar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
-            .addGroup(jd_listarLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel20)
-                .addGap(121, 121, 121))
-        );
-        jd_listarLayout.setVerticalGroup(
-            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_listarLayout.createSequentialGroup()
-                .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_listarLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(jd_listarLayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(bt_comprar)))
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5/maincrafubol.jpg"))); // NOI18N
+        jLabel21.setText("  ");
+        jd_listar.getContentPane().add(jLabel21);
+        jLabel21.setBounds(-10, -10, 580, 440);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
@@ -460,15 +442,15 @@ public class Liga_espagnola extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         equipo.add(new Equipos(nombre, copas, presupuesto, estadio));
-        
-        DefaultListModel modelo = (DefaultListModel) jl_lisJugadores.getModel();
+
+        DefaultListModel modelo = (DefaultListModel) jl_equipos.getModel();
         modelo.addElement(new Equipos(nombre, copas, presupuesto, estadio));
-        DefaultTreeModel m=(DefaultTreeModel)jt_equipos.getModel();
-        DefaultMutableTreeNode raiz=(DefaultMutableTreeNode)m.getRoot();
+        DefaultTreeModel m = (DefaultTreeModel) jt_equipos.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         DefaultMutableTreeNode nodo;
-        nodo=new DefaultMutableTreeNode(new Equipos(nombre, copas, presupuesto, estadio));
+        nodo = new DefaultMutableTreeNode(new Equipos(nombre, copas, presupuesto, estadio));
         DefaultMutableTreeNode equipos;
-        equipos=new DefaultMutableTreeNode(new Equipos(nombre, copas, presupuesto, estadio));
+        equipos = new DefaultMutableTreeNode(new Equipos(nombre, copas, presupuesto, estadio));
         nodo.add(equipos);
         raiz.add(nodo);
     }//GEN-LAST:event_bt_crearEMouseClicked
@@ -552,7 +534,8 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         int response = JOptionPane.showConfirmDialog(this, "Modificar nombre?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.OK_OPTION) {
-            String nom=JOptionPane.showInputDialog(this, "Ingrese el nuevo nombre");
+            String nom = JOptionPane.showInputDialog(this, "Ingrese el nuevo nombre");
+
         }
     }//GEN-LAST:event_modificarActionPerformed
 
@@ -586,7 +569,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
                     = (DefaultListModel) jl_lisJugadores.getModel();
             Jugador t = (Jugador) modL.
                     get(jl_lisJugadores.getSelectedIndex());
-            
+
             String nombre = " ";
             double precio = 0.0;
             double tecnica = 0.0;
@@ -594,13 +577,13 @@ public class Liga_espagnola extends javax.swing.JFrame {
             double resistencia = 0.0;
             String pocicion = " ";
             boolean dispo = false;;
-            pocicion=t.getPocicion();
-            nombre=t.getNombre();
-            precio=t.getPrecio();
-            habilidad=t.getHabilidad();
-            dispo=t.isDispon();
-            resistencia=t.getResistencia();
-            tecnica=t.getTecnica();
+            pocicion = t.getPocicion();
+            nombre = t.getNombre();
+            precio = t.getPrecio();
+            habilidad = t.getHabilidad();
+            dispo = t.isDispon();
+            resistencia = t.getResistencia();
+            tecnica = t.getTecnica();
             int cent = -1;
             for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().equals(pocicion)) {
@@ -681,6 +664,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -716,7 +700,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JTextField tf_precio;
     private javax.swing.JTextField tf_presu;
     // End of variables declaration//GEN-END:variables
-
+    Jugador jug;
     ArrayList<Equipos> equipo = new ArrayList();
     ArrayList<Jugador> jugadores = new ArrayList();
 }
