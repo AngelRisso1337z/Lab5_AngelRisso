@@ -42,32 +42,30 @@ public class Liga_espagnola extends javax.swing.JFrame {
         tf_presu = new javax.swing.JTextField();
         sp_copas = new javax.swing.JSpinner();
         bt_crearE = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_jugadores = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         tf_estadio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_jugadores = new javax.swing.JList<>();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        rb_dis = new javax.swing.JRadioButton();
+        rb_nod = new javax.swing.JRadioButton();
+        rb_atacante = new javax.swing.JRadioButton();
+        rb_defensor = new javax.swing.JRadioButton();
+        rb_medio = new javax.swing.JRadioButton();
+        rb_portero = new javax.swing.JRadioButton();
         tf_precio = new javax.swing.JTextField();
         tf_jugador = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
-        jSlider2 = new javax.swing.JSlider();
-        jSlider3 = new javax.swing.JSlider();
         jLabel17 = new javax.swing.JLabel();
-        jSlider4 = new javax.swing.JSlider();
+        sp_habilidad = new javax.swing.JSpinner();
+        sp_dura = new javax.swing.JSpinner();
+        sp_tecnica = new javax.swing.JSpinner();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
@@ -120,10 +118,15 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(bt_crearE);
         bt_crearE.setBounds(62, 245, 99, 43);
 
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        jButton2.setText("Agregar jugadores");
-        jd_agregar.getContentPane().add(jButton2);
-        jButton2.setBounds(42, 484, 129, 43);
+        bt_jugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        bt_jugadores.setText("Agregar jugadores");
+        bt_jugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_jugadoresMouseClicked(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(bt_jugadores);
+        bt_jugadores.setBounds(42, 484, 129, 43);
 
         jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel7.setText("Estadio Local");
@@ -134,8 +137,8 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(tf_estadio);
         tf_estadio.setBounds(202, 165, 160, 23);
 
-        jList1.setModel(new DefaultListModel());
-        jScrollPane1.setViewportView(jList1);
+        jl_jugadores.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jl_jugadores);
 
         jd_agregar.getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(750, 80, 207, 159);
@@ -143,10 +146,6 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jLabel9.setText("Lista jugadores");
         jd_agregar.getContentPane().add(jLabel9);
         jLabel9.setBounds(840, 40, 73, 14);
-
-        jLabel10.setText("jLabel10");
-        jd_agregar.getContentPane().add(jLabel10);
-        jLabel10.setBounds(430, 330, 40, 14);
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel11.setText("Nombre de Jugador");
@@ -167,47 +166,47 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(jLabel14);
         jLabel14.setBounds(42, 447, 93, 14);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Disponible");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rb_dis);
+        rb_dis.setSelected(true);
+        rb_dis.setText("Disponible");
+        rb_dis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rb_disActionPerformed(evt);
             }
         });
-        jd_agregar.getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(163, 311, 73, 23);
+        jd_agregar.getContentPane().add(rb_dis);
+        rb_dis.setBounds(163, 311, 73, 23);
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("No Disponible");
-        jd_agregar.getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(254, 311, 89, 23);
+        buttonGroup1.add(rb_nod);
+        rb_nod.setText("No Disponible");
+        jd_agregar.getContentPane().add(rb_nod);
+        rb_nod.setBounds(254, 311, 89, 23);
 
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Atacante");
-        jd_agregar.getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(161, 443, 69, 23);
+        buttonGroup2.add(rb_atacante);
+        rb_atacante.setSelected(true);
+        rb_atacante.setText("Atacante");
+        jd_agregar.getContentPane().add(rb_atacante);
+        rb_atacante.setBounds(161, 443, 69, 23);
 
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setText("Defensor");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup2.add(rb_defensor);
+        rb_defensor.setText("Defensor");
+        rb_defensor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                rb_defensorActionPerformed(evt);
             }
         });
-        jd_agregar.getContentPane().add(jRadioButton4);
-        jRadioButton4.setBounds(361, 443, 69, 23);
+        jd_agregar.getContentPane().add(rb_defensor);
+        rb_defensor.setBounds(361, 443, 69, 23);
 
-        buttonGroup2.add(jRadioButton5);
-        jRadioButton5.setText("Mediocampista");
-        jd_agregar.getContentPane().add(jRadioButton5);
-        jRadioButton5.setBounds(248, 443, 95, 23);
+        buttonGroup2.add(rb_medio);
+        rb_medio.setText("Mediocampista");
+        jd_agregar.getContentPane().add(rb_medio);
+        rb_medio.setBounds(248, 443, 95, 23);
 
-        buttonGroup2.add(jRadioButton6);
-        jRadioButton6.setText("Portero");
-        jd_agregar.getContentPane().add(jRadioButton6);
-        jRadioButton6.setBounds(448, 443, 61, 23);
+        buttonGroup2.add(rb_portero);
+        rb_portero.setText("Portero");
+        jd_agregar.getContentPane().add(rb_portero);
+        rb_portero.setBounds(448, 443, 61, 23);
 
         tf_precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,34 +224,36 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(tf_jugador);
         tf_jugador.setBounds(158, 341, 185, 20);
 
-        jLabel15.setText("jLabel15");
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel15.setText("Habilidad");
         jd_agregar.getContentPane().add(jLabel15);
-        jLabel15.setBounds(430, 370, 40, 14);
+        jLabel15.setBounds(410, 370, 50, 17);
 
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel16.setText("Durabilidad");
         jd_agregar.getContentPane().add(jLabel16);
-        jLabel16.setBounds(408, 288, 60, 14);
+        jLabel16.setBounds(408, 288, 60, 17);
 
-        jSlider1.setBackground(new java.awt.Color(153, 255, 0));
-        jSlider1.setForeground(new java.awt.Color(51, 255, 0));
-        jd_agregar.getContentPane().add(jSlider1);
-        jSlider1.setBounds(480, 290, 200, 23);
-
-        jSlider2.setBackground(new java.awt.Color(255, 255, 0));
-        jd_agregar.getContentPane().add(jSlider2);
-        jSlider2.setBounds(480, 330, 200, 23);
-
-        jSlider3.setBackground(new java.awt.Color(0, 255, 204));
-        jd_agregar.getContentPane().add(jSlider3);
-        jSlider3.setBounds(480, 370, 200, 23);
-
-        jLabel17.setText("tecnica");
+        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel17.setText("Tecnica");
         jd_agregar.getContentPane().add(jLabel17);
-        jLabel17.setBounds(430, 250, 34, 14);
+        jLabel17.setBounds(414, 330, 50, 17);
 
-        jSlider4.setBackground(new java.awt.Color(153, 0, 153));
-        jd_agregar.getContentPane().add(jSlider4);
-        jSlider4.setBounds(480, 250, 200, 23);
+        sp_habilidad.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        sp_habilidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        jd_agregar.getContentPane().add(sp_habilidad);
+        sp_habilidad.setBounds(500, 370, 50, 30);
+
+        sp_dura.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        sp_dura.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        sp_dura.setMaximumSize(new java.awt.Dimension(100, 100));
+        jd_agregar.getContentPane().add(sp_dura);
+        sp_dura.setBounds(500, 280, 50, 30);
+
+        sp_tecnica.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        sp_tecnica.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        jd_agregar.getContentPane().add(sp_tecnica);
+        sp_tecnica.setBounds(500, 330, 50, 30);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
@@ -329,17 +330,21 @@ public class Liga_espagnola extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_jugadorActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void rb_defensorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_defensorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_rb_defensorActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rb_disActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_disActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rb_disActionPerformed
 
     private void tf_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_precioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_precioActionPerformed
+
+    private void bt_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_jugadoresMouseClicked
+        String nombre=" ";
+    }//GEN-LAST:event_bt_jugadoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -379,12 +384,11 @@ public class Liga_espagnola extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_agregar;
     private javax.swing.JButton bt_crearE;
+    private javax.swing.JButton bt_jugadores;
     private javax.swing.JButton bt_listar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -400,20 +404,19 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JSlider jSlider3;
-    private javax.swing.JSlider jSlider4;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JList<String> jl_jugadores;
+    private javax.swing.JRadioButton rb_atacante;
+    private javax.swing.JRadioButton rb_defensor;
+    private javax.swing.JRadioButton rb_dis;
+    private javax.swing.JRadioButton rb_medio;
+    private javax.swing.JRadioButton rb_nod;
+    private javax.swing.JRadioButton rb_portero;
     private javax.swing.JSpinner sp_copas;
+    private javax.swing.JSpinner sp_dura;
+    private javax.swing.JSpinner sp_habilidad;
+    private javax.swing.JSpinner sp_tecnica;
     private javax.swing.JTextField tf_estadio;
     private javax.swing.JTextField tf_jugador;
     private javax.swing.JTextField tf_nombre;
