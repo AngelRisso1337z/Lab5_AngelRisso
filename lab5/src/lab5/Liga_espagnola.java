@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -73,11 +74,13 @@ public class Liga_espagnola extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         pp_menu = new javax.swing.JPopupMenu();
+        eliminar = new javax.swing.JMenuItem();
+        modificar = new javax.swing.JMenuItem();
         jd_listar = new javax.swing.JDialog();
         jScrollPane3 = new javax.swing.JScrollPane();
         jl_lisJugadores = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_equipos = new javax.swing.JTree();
         jButton1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -296,13 +299,30 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(jLabel18);
         jLabel18.setBounds(0, 0, 800, 540);
 
+        eliminar.setText("eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        pp_menu.add(eliminar);
+
+        modificar.setText("modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        pp_menu.add(modificar);
+
         jl_lisJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jl_lisJugadores.setModel(new DefaultListModel());
         jScrollPane3.setViewportView(jl_lisJugadores);
 
-        jTree1.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jt_equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane4.setViewportView(jTree1);
+        jt_equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(jt_equipos);
 
         jButton1.setText("Añadir a equipo");
 
@@ -503,8 +523,28 @@ public class Liga_espagnola extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_listarMouseClicked
 
     private void bt_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listarActionPerformed
-        // TODO add your handling code here:
+        jd_listar.setVisible(true);
+        jd_listar.setLocationRelativeTo(this);
+        jd_listar.pack();
+        jd_listar.setResizable(false);
+        jd_listar.setModal(true);
     }//GEN-LAST:event_bt_listarActionPerformed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(this, "seguro eliminar?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.OK_OPTION) {
+            
+            DefaultListModel mod=(DefaultListModel)jl_lisJugadores.getModel();
+            Jugador t = (Jugador) mod.
+                    get(jl_lisJugadores.getSelectedIndex());
+            
+            
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -548,6 +588,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JButton bt_listar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -573,12 +614,13 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTree jTree1;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JDialog jd_listar;
     private javax.swing.JList<String> jl_equipos;
     private javax.swing.JList<String> jl_jugadores;
     private javax.swing.JList<String> jl_lisJugadores;
+    private javax.swing.JTree jt_equipos;
+    private javax.swing.JMenuItem modificar;
     private javax.swing.JPopupMenu pp_menu;
     private javax.swing.JRadioButton rb_atacante;
     private javax.swing.JRadioButton rb_defensor;
