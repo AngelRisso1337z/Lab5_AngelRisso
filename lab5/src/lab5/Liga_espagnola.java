@@ -5,6 +5,11 @@
  */
 package lab5;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP_AMD_64
@@ -30,28 +35,234 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_agregar = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tf_nombre = new javax.swing.JTextField();
+        tf_presu = new javax.swing.JTextField();
+        sp_copas = new javax.swing.JSpinner();
+        bt_crearE = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        tf_estadio = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        tf_precio = new javax.swing.JTextField();
+        tf_jugador = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
+        jSlider2 = new javax.swing.JSlider();
+        jSlider3 = new javax.swing.JSlider();
+        jLabel17 = new javax.swing.JLabel();
+        jSlider4 = new javax.swing.JSlider();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
         bt_listar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jd_agregarLayout = new javax.swing.GroupLayout(jd_agregar.getContentPane());
-        jd_agregar.getContentPane().setLayout(jd_agregarLayout);
-        jd_agregarLayout.setHorizontalGroup(
-            jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_agregarLayout.setVerticalGroup(
-            jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jd_agregar.setTitle("Agregar");
+        jd_agregar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jd_agregar.setPreferredSize(new java.awt.Dimension(1026, 538));
+        jd_agregar.setResizable(false);
+        jd_agregar.getContentPane().setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel4.setText("Nombre de equipo");
+        jd_agregar.getContentPane().add(jLabel4);
+        jLabel4.setBounds(87, 50, 97, 17);
+
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel5.setText("Presupuesto");
+        jd_agregar.getContentPane().add(jLabel5);
+        jLabel5.setBounds(122, 91, 62, 17);
+
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel6.setText("Cantidad de copas ganadas");
+        jd_agregar.getContentPane().add(jLabel6);
+        jLabel6.setBounds(42, 135, 142, 17);
+
+        tf_nombre.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jd_agregar.getContentPane().add(tf_nombre);
+        tf_nombre.setBounds(202, 47, 160, 23);
+
+        tf_presu.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jd_agregar.getContentPane().add(tf_presu);
+        tf_presu.setBounds(202, 88, 160, 23);
+
+        sp_copas.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jd_agregar.getContentPane().add(sp_copas);
+        sp_copas.setBounds(202, 129, 42, 30);
+
+        bt_crearE.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        bt_crearE.setText("crear equipo");
+        bt_crearE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_crearEMouseClicked(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(bt_crearE);
+        bt_crearE.setBounds(62, 245, 99, 43);
+
+        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jButton2.setText("Agregar jugadores");
+        jd_agregar.getContentPane().add(jButton2);
+        jButton2.setBounds(42, 484, 129, 43);
+
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel7.setText("Estadio Local");
+        jd_agregar.getContentPane().add(jLabel7);
+        jLabel7.setBounds(114, 168, 70, 17);
+
+        tf_estadio.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jd_agregar.getContentPane().add(tf_estadio);
+        tf_estadio.setBounds(202, 165, 160, 23);
+
+        jList1.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jList1);
+
+        jd_agregar.getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(750, 80, 207, 159);
+
+        jLabel9.setText("Lista jugadores");
+        jd_agregar.getContentPane().add(jLabel9);
+        jLabel9.setBounds(840, 40, 73, 14);
+
+        jLabel10.setText("jLabel10");
+        jd_agregar.getContentPane().add(jLabel10);
+        jLabel10.setBounds(430, 330, 40, 14);
+
+        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel11.setText("Nombre de Jugador");
+        jd_agregar.getContentPane().add(jLabel11);
+        jLabel11.setBounds(42, 342, 106, 17);
+
+        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel12.setText("Disponible");
+        jd_agregar.getContentPane().add(jLabel12);
+        jLabel12.setBounds(92, 313, 53, 17);
+
+        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel13.setText("Precio De Jugador");
+        jd_agregar.getContentPane().add(jLabel13);
+        jLabel13.setBounds(50, 380, 98, 17);
+
+        jLabel14.setText("Pocicion de jugador");
+        jd_agregar.getContentPane().add(jLabel14);
+        jLabel14.setBounds(42, 447, 93, 14);
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Disponible");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(163, 311, 73, 23);
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("No Disponible");
+        jd_agregar.getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(254, 311, 89, 23);
+
+        buttonGroup2.add(jRadioButton3);
+        jRadioButton3.setSelected(true);
+        jRadioButton3.setText("Atacante");
+        jd_agregar.getContentPane().add(jRadioButton3);
+        jRadioButton3.setBounds(161, 443, 69, 23);
+
+        buttonGroup2.add(jRadioButton4);
+        jRadioButton4.setText("Defensor");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(jRadioButton4);
+        jRadioButton4.setBounds(361, 443, 69, 23);
+
+        buttonGroup2.add(jRadioButton5);
+        jRadioButton5.setText("Mediocampista");
+        jd_agregar.getContentPane().add(jRadioButton5);
+        jRadioButton5.setBounds(248, 443, 95, 23);
+
+        buttonGroup2.add(jRadioButton6);
+        jRadioButton6.setText("Portero");
+        jd_agregar.getContentPane().add(jRadioButton6);
+        jRadioButton6.setBounds(448, 443, 61, 23);
+
+        tf_precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_precioActionPerformed(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(tf_precio);
+        tf_precio.setBounds(160, 380, 185, 20);
+
+        tf_jugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_jugadorActionPerformed(evt);
+            }
+        });
+        jd_agregar.getContentPane().add(tf_jugador);
+        tf_jugador.setBounds(158, 341, 185, 20);
+
+        jLabel15.setText("jLabel15");
+        jd_agregar.getContentPane().add(jLabel15);
+        jLabel15.setBounds(430, 370, 40, 14);
+
+        jLabel16.setText("Durabilidad");
+        jd_agregar.getContentPane().add(jLabel16);
+        jLabel16.setBounds(408, 288, 60, 14);
+
+        jSlider1.setBackground(new java.awt.Color(153, 255, 0));
+        jSlider1.setForeground(new java.awt.Color(51, 255, 0));
+        jd_agregar.getContentPane().add(jSlider1);
+        jSlider1.setBounds(480, 290, 200, 23);
+
+        jSlider2.setBackground(new java.awt.Color(255, 255, 0));
+        jd_agregar.getContentPane().add(jSlider2);
+        jSlider2.setBounds(480, 330, 200, 23);
+
+        jSlider3.setBackground(new java.awt.Color(0, 255, 204));
+        jd_agregar.getContentPane().add(jSlider3);
+        jSlider3.setBounds(480, 370, 200, 23);
+
+        jLabel17.setText("tecnica");
+        jd_agregar.getContentPane().add(jLabel17);
+        jLabel17.setBounds(430, 250, 34, 14);
+
+        jSlider4.setBackground(new java.awt.Color(153, 0, 153));
+        jd_agregar.getContentPane().add(jSlider4);
+        jSlider4.setBounds(480, 250, 200, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LIGA ESPAÑOLA");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(180, 20, 220, 46);
 
         bt_agregar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         bt_agregar.setText("agregar");
@@ -60,53 +271,28 @@ public class Liga_espagnola extends javax.swing.JFrame {
                 bt_agregarActionPerformed(evt);
             }
         });
+        getContentPane().add(bt_agregar);
+        bt_agregar.setBounds(70, 220, 102, 47);
 
         bt_listar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         bt_listar.setText("listar");
+        getContentPane().add(bt_listar);
+        bt_listar.setBounds(350, 220, 105, 47);
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setText("Agregar equipos y Jugadores");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 170, 195, 59);
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel3.setText("Listar los equipos");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(340, 190, 118, 21);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(bt_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(126, 126, 126)
-                            .addComponent(bt_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bt_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_listar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addGap(158, 158, 158))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5/futbol.jpg"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 13, 600, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,6 +304,42 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.setResizable(false);
         jd_agregar.setModal(true);
     }//GEN-LAST:event_bt_agregarActionPerformed
+
+    private void bt_crearEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearEMouseClicked
+        String nombre = "", estadio = "";
+        double presupuesto = 0;
+        int copas = 0;
+        try {
+            nombre = tf_nombre.getText();
+            estadio = tf_estadio.getText();
+            copas = (Integer) sp_copas.getValue();
+            presupuesto = Double.parseDouble(tf_presu.getText());
+        } catch (InputMismatchException e) {
+            JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error en el input,intente de nuevo");
+        } catch (NumberFormatException x) {
+            JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error en el input en el area\nadonde va un numero, intente de nuevo");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(jd_agregar, "ERROR FATAL. caso en consola");
+            ex.printStackTrace();
+        }
+
+    }//GEN-LAST:event_bt_crearEMouseClicked
+
+    private void tf_jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_jugadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_jugadorActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void tf_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_precioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_precioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +378,47 @@ public class Liga_espagnola extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_agregar;
+    private javax.swing.JButton bt_crearE;
     private javax.swing.JButton bt_listar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
+    private javax.swing.JSlider jSlider3;
+    private javax.swing.JSlider jSlider4;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JSpinner sp_copas;
+    private javax.swing.JTextField tf_estadio;
+    private javax.swing.JTextField tf_jugador;
+    private javax.swing.JTextField tf_nombre;
+    private javax.swing.JTextField tf_precio;
+    private javax.swing.JTextField tf_presu;
     // End of variables declaration//GEN-END:variables
+ArrayList<Equipos> equipo = new ArrayList();
 }
