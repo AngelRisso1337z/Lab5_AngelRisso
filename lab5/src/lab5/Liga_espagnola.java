@@ -317,7 +317,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         });
         pp_menu.add(modificar);
 
-        jd_listar.getContentPane().setLayout(null);
+        jd_listar.setSize(new java.awt.Dimension(576, 430));
 
         jl_lisJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jl_lisJugadores.setModel(new DefaultListModel());
@@ -328,16 +328,10 @@ public class Liga_espagnola extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jl_lisJugadores);
 
-        jd_listar.getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(23, 51, 179, 262);
-
         jt_equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
         jt_equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane4.setViewportView(jt_equipos);
-
-        jd_listar.getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(361, 51, 191, 262);
 
         bt_comprar.setText("Añadir a equipo");
         bt_comprar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,23 +339,56 @@ public class Liga_espagnola extends javax.swing.JFrame {
                 bt_comprarMouseClicked(evt);
             }
         });
-        jd_listar.getContentPane().add(bt_comprar);
-        bt_comprar.setBounds(236, 170, 107, 23);
 
         jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel19.setText("Jugadores");
-        jd_listar.getContentPane().add(jLabel19);
-        jLabel19.setBounds(71, 23, 53, 17);
 
         jLabel20.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jLabel20.setText("Equipos");
-        jd_listar.getContentPane().add(jLabel20);
-        jLabel20.setBounds(416, 23, 39, 17);
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5/maincrafubol.jpg"))); // NOI18N
         jLabel21.setText("  ");
-        jd_listar.getContentPane().add(jLabel21);
-        jLabel21.setBounds(-10, -10, 580, 440);
+
+        javax.swing.GroupLayout jd_listarLayout = new javax.swing.GroupLayout(jd_listar.getContentPane());
+        jd_listar.getContentPane().setLayout(jd_listarLayout);
+        jd_listarLayout.setHorizontalGroup(
+            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jLabel19))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(bt_comprar))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(426, 426, 426)
+                .addComponent(jLabel20))
+            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jd_listarLayout.setVerticalGroup(
+            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel19))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(bt_comprar))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel20))
+            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
@@ -527,7 +554,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_listar.setVisible(true);
         jd_listar.setLocationRelativeTo(this);
         jd_listar.pack();
-        jd_listar.setResizable(false);
+        jd_listar.setResizable(true);
         jd_listar.setModal(true);
     }//GEN-LAST:event_bt_listarActionPerformed
 
