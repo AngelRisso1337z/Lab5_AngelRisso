@@ -72,6 +72,15 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        pp_menu = new javax.swing.JPopupMenu();
+        jd_listar = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_lisJugadores = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jButton1 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
         bt_listar = new javax.swing.JButton();
@@ -287,6 +296,60 @@ public class Liga_espagnola extends javax.swing.JFrame {
         jd_agregar.getContentPane().add(jLabel18);
         jLabel18.setBounds(0, 0, 800, 540);
 
+        jl_lisJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jScrollPane3.setViewportView(jl_lisJugadores);
+
+        jTree1.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(jTree1);
+
+        jButton1.setText("Añadir a equipo");
+
+        jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel19.setText("Jugadores");
+
+        jLabel20.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        jLabel20.setText("Equipos");
+
+        javax.swing.GroupLayout jd_listarLayout = new javax.swing.GroupLayout(jd_listar.getContentPane());
+        jd_listar.getContentPane().setLayout(jd_listarLayout);
+        jd_listarLayout.setHorizontalGroup(
+            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(121, 121, 121))
+        );
+        jd_listarLayout.setVerticalGroup(
+            jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarLayout.createSequentialGroup()
+                .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_listarLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_listarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(jd_listarLayout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jButton1)))
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIGA ESPAÑOLA DE FUTBOL");
         getContentPane().setLayout(null);
@@ -309,6 +372,16 @@ public class Liga_espagnola extends javax.swing.JFrame {
 
         bt_listar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         bt_listar.setText("listar");
+        bt_listar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_listarMouseClicked(evt);
+            }
+        });
+        bt_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_listarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bt_listar);
         bt_listar.setBounds(350, 220, 105, 47);
 
@@ -407,7 +480,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
         }
 
         dispo = rb_dis.isSelected();
-        jugadores.add(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo));
+        jugadores.add(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo,pocicion));
 
         tf_jugador.setText("");
         sp_tecnica.setValue(1);
@@ -416,8 +489,22 @@ public class Liga_espagnola extends javax.swing.JFrame {
         tf_precio.setText("");
         
         DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
-        modelo.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo));
+        DefaultListModel mod=(DefaultListModel) jl_lisJugadores.getModel();
+        modelo.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo,pocicion));
+        mod.addElement(new Jugador(nombre, habilidad, tecnica, resistencia, precio, dispo, pocicion));
     }//GEN-LAST:event_bt_jugadoresMouseClicked
+
+    private void bt_listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_listarMouseClicked
+        jd_listar.setVisible(true);
+        jd_listar.setLocationRelativeTo(this);
+        jd_listar.pack();
+        jd_listar.setResizable(false);
+        jd_listar.setModal(true);
+    }//GEN-LAST:event_bt_listarMouseClicked
+
+    private void bt_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_listarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,6 +548,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JButton bt_listar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -471,7 +559,9 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -481,9 +571,15 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTree jTree1;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JDialog jd_listar;
     private javax.swing.JList<String> jl_equipos;
     private javax.swing.JList<String> jl_jugadores;
+    private javax.swing.JList<String> jl_lisJugadores;
+    private javax.swing.JPopupMenu pp_menu;
     private javax.swing.JRadioButton rb_atacante;
     private javax.swing.JRadioButton rb_defensor;
     private javax.swing.JRadioButton rb_dis;
