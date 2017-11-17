@@ -343,7 +343,35 @@ public class Liga_espagnola extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_precioActionPerformed
 
     private void bt_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_jugadoresMouseClicked
-        String nombre=" ";
+        String nombre = " ";
+        double precio = 0.0;
+        double tecnica = 0.0;
+        double habilidad = 0.0;
+        double resistencia = 0.0;
+        String pocicion = " ";
+        boolean dispo = false;
+        nombre = tf_jugador.getText();
+        precio = Double.parseDouble(tf_precio.getText());
+        tecnica = Double.parseDouble((String) sp_tecnica.getValue());
+        habilidad = Double.parseDouble((String) sp_habilidad.getValue());
+
+        if (rb_atacante.isSelected()) {
+            pocicion = "Atacante";
+
+        } else if (rb_medio.isSelected()) {
+            pocicion = "Mediocampista";
+
+        } else if (rb_portero.isSelected()) {
+            pocicion = "Portero";
+
+        } else {
+            pocicion = "Defensor";
+
+        }
+
+        dispo = rb_dis.isSelected();
+
+
     }//GEN-LAST:event_bt_jugadoresMouseClicked
 
     /**
@@ -423,5 +451,7 @@ public class Liga_espagnola extends javax.swing.JFrame {
     private javax.swing.JTextField tf_precio;
     private javax.swing.JTextField tf_presu;
     // End of variables declaration//GEN-END:variables
-ArrayList<Equipos> equipo = new ArrayList();
+
+    ArrayList<Equipos> equipo = new ArrayList();
+    ArrayList<Jugador> jugadores = new ArrayList();
 }
